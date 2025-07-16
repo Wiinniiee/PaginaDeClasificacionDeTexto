@@ -1,0 +1,157 @@
+@font-face {
+    font-family: 'MiFuente';
+    src: url('/recursos/NotoSans.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+  }
+
+*{
+    font-family: 'MiFuente', sans-serif;
+    box-sizing: border-box; /* Esto hace que padding no afecte el ancho total */
+}
+
+h4{
+    color: #BA3C4C;
+ } 
+
+h2{
+    color: #611232;
+    font-size: 40px;
+  }
+
+  .qr-grande {
+    max-width: 300px;
+  }
+  
+
+  .img-emocion {
+    width: 120px;
+    height: auto;
+  }
+  .img-emocion2 {
+    width: 110px;
+    height: auto;
+  }
+
+
+  /*
+  Text Area
+  */
+  
+.feelings-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.feelings-box {
+    align-items: center;
+    width: 80%; /* Reducido desde 80% */
+    min-height: 220px; /* Aumentada desde 150px */
+    padding: 10px;
+    border: 5px solid #B38E5D;
+    border-radius: 8px;
+    font-family: 'Arial', sans-serif;
+    font-size: 25px; /* Aumentado desde 16px */
+    margin-bottom: 25px;
+    resize: vertical;
+    transition: border 0.3s;
+}
+
+
+.feelings-box:focus {
+            outline: none;
+            border-color: #B38E5D;
+            box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.2);
+}
+
+.textomostrar{
+    color: #BA3C4C;
+}
+
+/*Navbar*/
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative; /* Añadido para posicionamiento absoluto */
+}
+
+.logo-left {
+    /* Mantiene el logo pegado a la izquierda */
+    margin-right: auto;
+}
+
+.logo-center {
+    /* Centra este elemento absolutamente */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo-placeholder {
+    /* Elemento invisible para balancear el espacio */
+    visibility: hidden;
+}
+
+body {
+    background-color: #ECECEC;
+    margin: 0; /* Añade esto para eliminar márgenes por defecto */
+    padding: 0; /* Añade esto para eliminar padding por defecto */
+    overflow-x: hidden; /* Previene scroll horizontal */
+}
+
+h1{
+    color: #611232;
+}
+
+/*Pagina 2*/
+
+.feelings-container2 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.feelings-box2 {
+    align-items: center;
+    width: 50%;
+    min-height: 150px;
+    padding: 15px;
+    border: 5px solid #B38E5D;
+    border-radius: 8px;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    margin-bottom: 25px;
+    resize: vertical;
+    transition: border 0.3s;
+}
+
+.feelings-box2:focus {
+    outline: none;
+    border-color: #611232;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+        
+.option-button {
+    padding: 12px 20px;
+    background-color: #611232;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+        
+.option-button:hover {
+    background-color: #B38E5D;
+}

@@ -47,6 +47,25 @@ export function analizarTexto() {
   });
 }
 
+export function enviarEjemplo() {
+  const ejemplo = "Hoy fue un día extraño, no sabría decir si fue bueno o malo.";
+
+  // Guarda la frase y un flag diferente en Firebase
+  push(frasesRef, {
+    texto: ejemplo,
+    timestamp: Date.now(),
+    tipo: "ejemplo"
+  }).then(() => {
+    localStorage.setItem("grayscaleEjemplo", "true");
+    window.location.href = "index.html";
+  }).catch((error) => {
+    console.error("Error al enviar ejemplo:", error);
+  });
+}
+
+
+
+
 // FUNCIÓN PARA MOSTRAR FRASES
 export function mostrarFrasesEnTiempoReal() {
   const textoMostrado = document.querySelector(".feelings-box.textomostrar");
@@ -58,12 +77,68 @@ export function mostrarFrasesEnTiempoReal() {
   }
 
   // Escucha cambios en la referencia 'frases'
-  onChildAdded(frasesRef, (snapshot) => {
-    const frase = snapshot.val().texto;
-    console.log("Frase recibida de Firebase:", frase); // Debug
-    
+    onChildAdded(frasesRef, (snapshot) => {
+    const datosFrase = snapshot.val();
+    const frase = datosFrase.texto;
     textoMostrado.value = frase;
-    
+
+    const esEjemplo = datosFrase.tipo === "ejemplo" && localStorage.getItem("grayscaleEjemplo") === "true";
+
+    if (esEjemplo) {
+      // Para ejemplos: poner en gris positivo y negativo
+      const bueno = document.getElementById("imgBueno");
+      const buenoM = document.getElementById("imgBuenoM");
+      const malo = document.getElementById("imgMalo");
+      const maloM = document.getElementById("imgMaloM");
+
+      const textoPositivo = document.getElementById("textoPositivo");
+      const textoNegativo = document.getElementById("textoNegativo");
+
+      [bueno, buenoM, malo, maloM].forEach(img => {
+        if (img) img.style.filter = "grayscale(100%)";
+      });
+
+      if (textoPositivo) textoPositivo.style.color = "gray";
+      if (textoNegativo) textoNegativo.style.color = "gray";
+
+      setTimeout(() => {
+        [bueno, buenoM, malo, maloM].forEach(img => {
+          if (img) img.style.filter = "none";
+        });
+
+        if (textoPositivo) textoPositivo.style.color = "";
+        if (textoNegativo) textoNegativo.style.color = "";
+
+        localStorage.removeItem("grayscaleEjemplo");
+      }, 10000);
+    } else {
+      // Para texto analizado: poner en gris neutral y negativo
+      const neutro = document.getElementById("imgNeutro");
+      const neutroM = document.getElementById("imgNeutroM");
+      const malo = document.getElementById("imgMalo");
+      const maloM = document.getElementById("imgMaloM");
+
+      const textoNeutral = document.getElementById("textoNeutral");
+      const textoNegativo = document.getElementById("textoNegativo");
+
+      [neutro, neutroM, malo, maloM].forEach(img => {
+        if (img) img.style.filter = "grayscale(100%)";
+      });
+
+      if (textoNeutral) textoNeutral.style.color = "gray";
+      if (textoNegativo) textoNegativo.style.color = "gray";
+
+      setTimeout(() => {
+        [neutro, neutroM, malo, maloM].forEach(img => {
+          if (img) img.style.filter = "none";
+        });
+
+        if (textoNeutral) textoNeutral.style.color = "";
+        if (textoNegativo) textoNegativo.style.color = "";
+      }, 10000);
+    }
+
+    // Borrar la frase después de 10 segundos
     setTimeout(() => {
       textoMostrado.value = "";
       remove(snapshot.ref).catch(error => {
@@ -72,4 +147,3 @@ export function mostrarFrasesEnTiempoReal() {
     }, 10000);
   });
 }
-

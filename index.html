@@ -55,21 +55,21 @@
         <div class="row justify-content-center">
       
           <div class="col-4 col-md-2">
-            <img src="recursos/bueno.png" class="img-fluid mb-2 img-emocion" alt="Positivo">
-            <img src="recursos/buenoM.png" class="img-fluid mb-2 img-emocion2" alt="Medidor Positivo">
-            <p class="fw-bold text-success">Positivo</p>
+            <img id="imgBueno" src="recursos/bueno.png" class="img-fluid mb-2 img-emocion" alt="Positivo">
+            <img id="imgBuenoM" src="recursos/buenoM.png" class="img-fluid mb-2 img-emocion2" alt="Medidor Positivo">
+            <p id="textoPositivo" class="fw-bold text-success">Positivo</p>
           </div>
       
           <div class="col-4 col-md-2">
-            <img src="recursos/neutro.png" class="img-fluid mb-2 img-emocion"  alt="Neutral">
-            <img src="recursos/neutroM.png" class="img-fluid mb-2 img-emocion2" alt="Medidor Neutral">
-            <p class="fw-bold text-warning">Neutral</p>
+            <img id="imgNeutro" src="recursos/neutro.png" class="img-fluid mb-2 img-emocion"  alt="Neutral">
+            <img id="imgNeutroM" src="recursos/neutroM.png" class="img-fluid mb-2 img-emocion2" alt="Medidor Neutral">
+            <p id="textoNeutral" class="fw-bold text-warning">Neutral</p>
           </div>
       
           <div class="col-4 col-md-2">
-            <img src="recursos/malo.png" class="img-fluid mb-2 img-emocion" alt="Negativo">
-            <img src="recursos/maloM.png" class="img-fluid mb-2 img-emocion2" alt="Medidor Negativo">
-            <p class="fw-bold text-danger">Negativo</p>
+            <img id="imgMalo" src="recursos/malo.png" class="img-fluid mb-2 img-emocion" alt="Negativo">
+            <img id="imgMaloM" src="recursos/maloM.png" class="img-fluid mb-2 img-emocion2" alt="Medidor Negativo">
+            <p id="textoNegativo" class="fw-bold text-danger">Negativo</p>
           </div>
       
         </div>
@@ -79,7 +79,7 @@
 
 
   <!--script de función js (mostrar frases)-->
-  <script type="module">
+  <script type="module" def>
       import { mostrarFrasesEnTiempoReal } from "./js/script.js";
       window.addEventListener("load", mostrarFrasesEnTiempoReal);
   </script>
